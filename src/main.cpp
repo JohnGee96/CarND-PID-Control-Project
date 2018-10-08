@@ -8,11 +8,11 @@
 using json = nlohmann::json;
 
 // PID gain constants
-static const double STEER_KP = 0.09;
-static const double STEER_KI = 0.0005; // Probably no system bias in the simulation
-static const double STEER_KD = 2.2;
+static const double STEER_KP = 0.08;
+static const double STEER_KI = 0.0; // Probably no system bias in the simulation
+static const double STEER_KD = 3.4;
 
-static const double THROT_KP = 2;
+static const double THROT_KP = 5.0;
 static const double THROT_KI = 0.0;
 static const double THROT_KD = 0.0;
 
