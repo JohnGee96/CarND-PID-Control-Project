@@ -8,17 +8,19 @@
 using json = nlohmann::json;
 
 // PID gain constants
-static const double STEER_KP = 0.2;
-static const double STEER_KI = 0.001;
-static const double STEER_KD = 3.5;
+static const double STEER_KP = 0.13;
+static const double STEER_KI = 0.0; // Probably no system bias in the simulation
+static const double STEER_KD = 4.4;
 
-static const double THROT_KP = 0.1;
-static const double THROT_KI = 0.001;
-static const double THROT_KD = 1.5;
+static const double THROT_KP = 1.5;
+static const double THROT_KI = 0.0;
+static const double THROT_KD = 0.0;
 
 // Speed Threshold
-static const double INIT_THROTTLE = 0.3;
-static const double COMFORT_SPEED = 25.0;
+static const double INIT_THROTTLE = .6;
+static const double BRAKE = -0.2;
+static const double CRUISE_SPEED = 40.0;
+static const double MAX_SPEED = 50.0;
 
 // For converting back and forth between radians and degrees.
 constexpr double pi() { return M_PI; }
@@ -80,10 +82,13 @@ int main()
           if (steer_value > 1.0) steer_value = 1.0;
           else if (steer_value < -1.0) steer_value = -1.0;
           
-          if (speed > COMFORT_SPEED)
+          if (speed > MAX_SPEED) 
+            throttle = BRAKE;
+          else if (speed > CRUISE_SPEED)
             throttle = INIT_THROTTLE + pid_throttle.TotalError();
           else
             throttle = INIT_THROTTLE;
+          
 
 
           // DEBUG
