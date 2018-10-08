@@ -8,19 +8,19 @@
 using json = nlohmann::json;
 
 // PID gain constants
-static const double STEER_KP = 0.13;
-static const double STEER_KI = 0.0; // Probably no system bias in the simulation
-static const double STEER_KD = 4.4;
+static const double STEER_KP = 0.09;
+static const double STEER_KI = 0.0005; // Probably no system bias in the simulation
+static const double STEER_KD = 2.2;
 
-static const double THROT_KP = 1.5;
+static const double THROT_KP = 2;
 static const double THROT_KI = 0.0;
 static const double THROT_KD = 0.0;
 
 // Speed Threshold
-static const double INIT_THROTTLE = .6;
+static const double INIT_THROTTLE = .8;
 static const double BRAKE = -0.2;
-static const double CRUISE_SPEED = 40.0;
-static const double MAX_SPEED = 50.0;
+static const double CRUISE_SPEED = 60.0;
+static const double MAX_SPEED = 70.0;
 
 // For converting back and forth between radians and degrees.
 constexpr double pi() { return M_PI; }
